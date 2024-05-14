@@ -1,0 +1,72 @@
+{% load static %}
+    
+
+
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+{% endblock style%}
+
+{% block header%}
+
+{% endblock header%}
+
+{% block content %}
+<body style="flex-direction: row; overflow: hidden;">
+    <div class="container" style="margin-top: 15vh;">
+        <div class="img-container">
+            <img src="../../static/images/logo.png" alt="logo">
+            <h1>Books  management</h1>
+        </div>
+        <form action="" method="post" id="formCad">
+            {% csrf_token %} 
+    
+          <div>
+            <label for="username">Username</label>
+            <input type="text" placeholder="Username" name="username" id="username">
+          </div>
+          
+    
+            <div>
+                <label for="email">Email</label>
+                <input type="text" placeholder="Email or Phone" name="email" id="email">
+                <p id=msgEmail></p>
+            </div>
+
+            <div>
+                <label for="cpf">cpf</label>
+                <input type="text" placeholder="digite seu cpf" name="cpf" id="cpf">
+                <p id=msgCpf></p>
+            </div>
+
+            <div>
+                <label for="telefone">telefone</label>
+                <input type="text" placeholder="digite seu telefone" name="telefone" id="telefone">
+            </div>
+
+            <div>
+                <label for="password1">Password</label>
+                <input type="password" placeholder="Password" id="password1" name="password1">
+            </div>
+            <select name="admin" id="admin">
+                <option value="True">Admin</option>
+                <option value="False">Normal user</option>
+            </select>
+    
+            <div>
+                <label for="password2">Confrom Password</label>
+                <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+            </div>
+      
+            <button type="submit">Signup</button>
+            
+        </form>
+
+        <div>
+   
+        </div>
+    </div>
+</body>
+
+
+{% endblock content %}

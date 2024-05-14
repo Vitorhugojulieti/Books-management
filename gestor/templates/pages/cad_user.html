@@ -1,0 +1,70 @@
+{% load static %}
+    
+
+
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/form.css' %}">
+{% endblock style%}
+
+{% block header%}
+
+{% endblock header%}
+
+{% block content %}
+<body style="flex-direction: row; overflow: hidden;">
+    <div class="shape"></div>
+    <div class="container" style="width: 80%; margin-top: 15vh;">
+        <div class="img-container">
+            <img src="../../static/images/logo.png" alt="logo">
+            <h1>Books  management</h1>
+        </div>
+        <form action="" method="post" id="formCad">
+            {% csrf_token %} 
+    
+          <div>
+            <label for="username">Username</label>
+            <input type="text" placeholder="Username" name="username" id="username">
+          </div>
+          
+    
+            <div>
+                <label for="email">Email</label>
+                <input type="text" placeholder="Email or Phone" name="email" id="email">
+                <p id=msgEmail></p>
+            </div>
+
+            <div>
+                <label for="cpf">cpf</label>
+                <input type="text" placeholder="digite seu cpf" name="cpf" id="cpf">
+                <p id=msgCpf></p>
+            </div>
+
+            <div>
+                <label for="telefone">telefone</label>
+                <input type="text" placeholder="digite seu telefone" name="telefone" id="telefone">
+            </div>
+
+            <div>
+                <label for="password1">Password</label>
+                <input type="password" placeholder="Password" id="password1" name="password1">
+            </div>
+    
+    
+            <div>
+                <label for="password2">Confrom Password</label>
+                <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+            </div>
+      
+            <button type="submit">Signup</button>
+            <a href="{% url 'login_user' %}" >i have already account</a>
+        </form>
+
+        <div>
+   
+        </div>
+    </div>
+</body>
+
+
+{% endblock content %}

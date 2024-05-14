@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+        <h1> Deseja excluir o cliente {{ deletar.nome }} </h1>
+        <button class="btn btn-outline-danger" type="submit" value="Sim">deletar</button>
+        <a href="{% url 'usuarios' %}" class ="btn-outlinded-primary">Voltar</a>
+    </form>
+
+{% endblock content %}

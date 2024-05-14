@@ -1,0 +1,21 @@
+{% load static %}
+    
+
+
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/cad_livros.css' %}">
+{% endblock style%}
+
+{% block content %}
+   <div class="container">
+    <form action="{% url 'cad_livros' %}" method="Post" enctype="multipart/form-data">
+        <legend>Cadastrar Livro</legend>
+        <div >
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" name="cadastrar" value="Cadastrar">Cadastrar</button>
+            <a class="btn btn-outline-danger" href="{% url 'livros' %}">Voltar</a>
+        </div>
+    </form>
+   </div>
+{% endblock content %}

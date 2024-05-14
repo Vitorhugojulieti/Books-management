@@ -1,0 +1,72 @@
+form,form>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    width: 80%;
+    gap: .75rem;
+    justify-content: center;
+}
+form>div{
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+form>div>label{
+    align-self: flex-start;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+form>div>input{
+    border-radius: 5px;
+    padding: .5rem;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+}
+
+form>button, .container > div >button{
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+    background-color: #EBDACC;
+    color: #5A0F19;
+    width: 20%;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 .5rem #000;
+    cursor: pointer;
+    transition: .4s;
+}
+
+form>button:hover, .container > div >button:hover{
+    scale: 1.1;
+}
+
+form>a ,.container > div >a{
+    color: #EBDACC;
+}
+
+
+#formCad{
+    display: grid;
+    grid-template-columns: 40% 40%;
+    margin-bottom: 1rem;
+}
+
+#formCad>div{
+    width: 100%;
+}
+.container > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container > div>button{
+    width: 100%;
+}

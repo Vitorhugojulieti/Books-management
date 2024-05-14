@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+{% endblock style%}
+
+
+{% block content %}
+<body>
+	<div class="container">
+		<h1>Reserva</h1>
+
+        <h2>Usuario : {{reserva.usuario}}</h2>
+
+        <ul>
+            {% for livro in livros %}
+            <li>{{ livro.titulo }} - {{ livro.autor }}</li>
+            <a href="{% url 'detalhes_livro' livro.id %}" class="two" style="color: #fff;">Detalhes</a>
+            {% endfor %}
+        </ul>
+
+
+		<a class="btn btn-outline-danger" href="{% url 'reservas' %}">Voltar</a>
+	</div>
+
+</body>
+
+{% endblock content %}
+
+

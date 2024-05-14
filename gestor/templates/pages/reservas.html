@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/usuarios.css' %}">
+{% endblock style%}
+{% block content %}
+<div class="container">
+    <h1>Lista de Reservas</h1>
+
+<table border="1" >
+    <thread class="header-table">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Data</th>
+            <th scope="col">Status</th>
+            <th scope="col">Opções</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for reserva in reservas %} 
+        <tr>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.usuario }}</td>
+            <td>{{ reserva.data_reserva }}</td>
+            <td>{{ reserva.status }}</td>
+            
+    
+            <td>
+                <a class="'btn btn-success" href="{% url 'detalhes_reserva' reserva.id %}" role="button"> Detalhes</a>
+                <!-- modificar url para receber 2 parametros em upd reserva -->
+                <a class="'btn btn-danger" href="#" role="button"> Retirado</a>
+                {% if not reserva.status == "devolvido" %}
+                    <a href="{% url 'upd_reserva' reserva.id %}">Devolvido</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">Sem Livros registrados</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content %}

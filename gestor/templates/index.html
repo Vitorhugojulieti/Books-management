@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock style%}
+
+{% block content%}
+{% if logado %}
+    {% if user_is_admin %}
+        <h1 >Bem-vindo, {{ request.user.username }}</h1>
+        <hr>
+        <div class="container">
+           
+            <div class="container-livros">
+                {% for livro in livros %} 
+                <div class="livros-cad">
+                    <img src="{{livro.foto.url}}" alt="">
+                    <h2>Titulo: {{ livro.titulo }} </h2>
+                    <h2>Editora: {{ livro.editora }} </h2>
+                    <h2>Ano de publicação: {{ livro.ano_publicacao }} </h2> 
+                    <a href="{% url 'detalhes_livro' livro.id %}" class="two" style="color: #fff;">Detalhes</a>
+                    <a href="{% url 'adicionar_carrinho' livro.id %}" class="two" style="color: #fff;">Add carrinho</a>
+                </div>
+                {% endfor %}	
+    
+            </div>
+            <div class="container-carrinho">
+                <h1>Carrinho:</h1>
+                {% for livro_id, livro_info in carrinho.items %}
+                    <h2 style="color: #000;"> Titulo : {{livro_info.titulo}}</h2>
+                {% endfor %}
+                <a href="{% url 'confirmacao_reserva' %}" style="color: #000;">Finalizar</a>
+            </div>
+        </div>
+    {% else %}
+        {% if user_is_block %}
+            <h1>Usuario esta bloqueado</h1>
+        {% else %}
+            <div class="container">
+                    <h1>Bem-vindo, {{ request.user.username }}</h1>
+                    <hr>
+                    <br>
+                    <h2>Livros disponiveis</h2>
+                    <br>
+                    <div class="container-livros">
+                        {% for livro in livros %} 
+                        <div class="livros-cad">
+                            <img src="{{livro.foto.url}}" alt="">
+                            <h2>Titulo: {{ livro.titulo }} </h2>
+                            <h2>Editora: {{ livro.editora }} </h2>
+                            <h2>Ano de publicação: {{ livro.ano_publicacao }} </h2> 
+                            <a href="{% url 'detalhes_livro' livro.id %}" class="two" style="color: #fff;">Detalhes</a>
+                            <a href="{% url 'adicionar_carrinho' livro.id %}" class="two" style="color: #fff;">Add carrinho</a>
+                        </div>
+                        {% endfor %}	
+
+                        <h1>Carrinho:</h1>
+                        {% for livro_id, livro_info in carrinho.items %}
+                            <h2 style="color: #fff;"> Titulo : {{livro_info.titulo}}</h2>
+                        {% endfor %}
+                        <a href="{% url 'confirmacao_reserva' %}" style="color: #fff;">Finalizar</a>
+                    </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% else %}
+<body>
+    <div class="container">
+        <div class="img-container" style="width: 100%;height: 100%;">
+            <h1>Sua biblioteca, mais perto de você!</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate deleniti voluptas quisquam officiis sit tenetur reiciendis aliquam, nobis harum quo nemo consequatur omnis non eaque porro quasi? Impedit, officiis animi!</p>
+            <button>Reverve-já</button>
+        </div>
+        <!-- <a href="https://br.freepik.com/fotos-gratis/reserve-na-biblioteca-com-livro-aberto_3737798.htm#fromView=search&page=1&position=23&uuid=94382c5c-510f-4300-a50f-a7cd55981e4f">Imagem de jcomp no Freepik</a> -->
+    </div>
+</body>
+{% endif %}
+
+{% endblock content%}

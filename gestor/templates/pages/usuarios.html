@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/usuarios.css' %}">
+{% endblock style%}
+
+{% block content %}
+<body>
+<div class="container">
+	<h1>Todos os usuarios</h1>
+
+	<table border="1" >
+		<thread class="header-table">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Email</th>
+				<th scope="col">cpf</th>
+				<th scope="col">telefone</th>
+				<th scope="col">bloqueado</th>
+				<th scope="col">Admin</th>
+				<th scope="col">Opções</th>
+			</tr>
+		</thread>
+		<tbody>
+			{% for usuario in usuarios %} 
+			<tr>
+				<td>{{ usuario.id }}</td>
+				<td>{{ usuario.username }}</td>
+				<td>{{ usuario.email }}</td>
+				<td>{{ usuario.cpf }}</td>
+				<td>{{ usuario.telefone }}</td>
+				<td>{{ usuario.bloqueado }}</td>
+				<td>{{ usuario.admin }}</td>
+				<td>
+					<a class="'btn btn-success" href="{% url 'upd_user' usuario.id %}" role="button"> Atualizar</a>
+					{% if usuario.bloqueado %}
+						<a class="'btn btn-danger" href="{% url 'desblock_user' usuario.id %}" role="button"> Desbloquear</a>
+					{% else %}
+						<a class="'btn btn-danger" href="{% url 'block_user' usuario.id %}" role="button"> Bloquear</a>
+					{% endif %}
+				</td>
+			</tr>
+			{% empty %}
+				<tr>
+					<td colspan="4">Sem Clientes registrados</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{% url 'cad_user_admin' %}">Novo</a>
+</div>
+{% endblock content %}
+
+

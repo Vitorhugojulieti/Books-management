@@ -1,0 +1,10 @@
+{% block content %}
+
+    <form action="{% url 'upd_reserva' pk  %}" method="post">
+        {% csrf_token %}
+        <h1>Confirmar devolução da reserva?</h1>
+        <button class="btn btn-outline-success" type="submit" name="atualizar" >Confirmar devolução</button>
+        <a class="btn btn-outline-danger" href="{% url 'reservas' %}">Voltar</a>
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/usuarios.css' %}">
+{% endblock style%}
+
+
+{% block content %}
+<body>
+	<div class="container">
+			<h1>Todos os livros</h1>
+
+		<table border="1" >
+			<thread class="header-table">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nome</th>
+					<th scope="col">quantidade</th>
+					<th scope="col">Opções</th>
+				</tr>
+			</thread>
+			<tbody>
+				{% for livro in livros %} 
+				<tr>
+					<td>{{ livro.id }}</td>
+					<td>{{ livro.titulo }}</td>
+					<td>{{ livro.quantidade_disponivel }}</td>
+					
+			
+					<td>
+						<a class="'btn btn-success" href="{% url 'upd_livro' livro.id %}" role="button"> Atualizar</a>
+						<a class="'btn btn-danger" href="{% url 'del_livro' livro.id %}" role="button"> Excluir</a>
+					</td>
+				</tr>
+				{% empty %}
+					<tr>
+						<td colspan="4">Sem Livros registrados</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="{% url 'cad_livros' %}" class ="btn-cad-livro">Novo</a>
+		<a class="btn btn-outline-danger" href="{% url 'index' %}">Home</a>
+	</div>
+
+</body>
+
+{% endblock content %}
+
+

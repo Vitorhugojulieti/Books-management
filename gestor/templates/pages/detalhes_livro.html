@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+{% endblock style%}
+
+
+{% block content %}
+<body>
+	<div class="container">
+		<h1>{{ livro.titulo }}</h1>
+
+        <h2>{{ livro.autor }}</h2>
+
+
+		<a class="btn btn-outline-danger" href="{% url 'index' %}">Voltar inicio</a>
+		<a class="btn btn-outline-danger" href="{% url 'reservas' %}">Voltar reserva</a>
+	</div>
+
+</body>
+
+{% endblock content %}
+
+

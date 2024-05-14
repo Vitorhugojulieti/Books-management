@@ -1,0 +1,10 @@
+{% block content %}
+
+    <form action="{% url 'desblock_user' pk  %}" method="post">
+        {% csrf_token %}
+        <h1>Deseja desbloquear o usuario?</h1>
+        <button class="btn btn-outline-success" type="submit" name="atualizar" >Desbloquear</button>
+        <a class="btn btn-outline-danger" href="{% url 'usuarios' %}">Voltar</a>
+    </form>
+ 
+{% endblock content %}

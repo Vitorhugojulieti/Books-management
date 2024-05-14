@@ -1,0 +1,10 @@
+{% block content %}
+
+    <form action="{% url 'upd_livro' pk  %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-outline-success" type="submit" name="atualizar" >Atualizar</button>
+        <a class="btn btn-outline-danger" href="{% url 'livros' %}">Voltar</a>
+    </form>
+
+{% endblock content %}
